@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Get four zeros breathing</title>
+<meta name="description" content="Download four zeros breathing on the App Store or Google Play." />
+<link rel="icon" href="../assets/icon.png" />
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --bg-soft: #10162a;
+    --text: #f2ede0;
+    --text-muted: #8a8fa3;
+    --accent-soft: #f2c879;
+    --border: #1e2540;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background: radial-gradient(ellipse 900px 500px at 50% -10%, #1a2140 0%, var(--bg) 60%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wrap {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 48px 24px;
+    text-align: center;
+  }
+
+  .icon {
+    width: 84px;
+    height: 84px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(232, 152, 63, 0.25);
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0 0 32px;
+  }
+
+  .stores {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .store-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+
+  .store-btn:hover {
+    transform: translateY(-1px);
+    border-color: var(--accent-soft);
+  }
+
+  .store-btn svg {
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <img class="icon" src="../assets/icon.png" alt="four zeros breathing app icon" />
+    <h1>Get four zeros breathing</h1>
+    <p class="subtitle">Choose your platform to download the app.</p>
+    <div class="stores">
+      <a class="store-btn" id="ios-btn" href="https://apps.apple.com/app/id6790439029">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.536c-.026-2.72 2.222-4.02 2.324-4.084-1.267-1.853-3.24-2.107-3.945-2.13-1.68-.176-3.28.99-4.132.99-.85 0-2.163-.965-3.56-.94-1.833.028-3.523 1.066-4.464 2.71-1.905 3.303-.487 8.19 1.368 10.87.907 1.31 1.988 2.782 3.41 2.73 1.37-.056 1.888-.887 3.545-.887 1.657 0 2.122.887 3.57.86 1.474-.028 2.406-1.34 3.303-2.653 1.043-1.522 1.472-2.995 1.494-3.07-.033-.014-2.866-1.1-2.893-4.376zm-2.71-8.05c.75-.91 1.257-2.174 1.118-3.436-1.082.043-2.39.72-3.166 1.63-.694.805-1.303 2.09-1.14 3.32 1.202.094 2.434-.61 3.188-1.514z"/></svg>
+        App Store
+      </a>
+      <a class="store-btn" id="android-btn" href="https://play.google.com/store/apps/details?id=com.rebreathe">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 2.6c-.4.4-.6.9-.6 1.5v15.8c0 .6.2 1.1.6 1.5l.1.1L13 12.4v-.2L3.7 2.5l-.1.1zm11.4 10.1L4.7 22l8.7-8.7 1.6 1.4zm3.3-3.3l-2.7 1.6-1.8-1.8 1.8-1.8 2.7 1.6c.5.3.8.7.8 1.2s-.3.9-.8 1.2zM4.7 2l9.3 9.3-1.6 1.6L4.7 2z"/></svg>
+        Google Play
+      </a>
+    </div>
+  </div>
+
+  <script>
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    var iosLink = document.getElementById('ios-btn').href;
+    var androidLink = document.getElementById('android-btn').href;
+
+    if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+      window.location.replace(iosLink);
+    } else if (/android/i.test(ua)) {
+      window.location.replace(androidLink);
+    }
+    // desktop / unknown UA: no redirect, buttons above serve as the landing page
+  </script>
+</body>
+</html>
