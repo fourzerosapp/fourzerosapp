@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Four Zeros Breath — Support</title>
-<meta name="description" content="Support and contact information for the Four Zeros Breath app." />
+<title>four zeros breathing — Support</title>
+<meta name="description" content="Support and contact information for the four zeros breathing app." />
 <link rel="icon" href="assets/icon.png" />
 <style>
   :root {
@@ -30,6 +30,36 @@
 
   body {
     background: radial-gradient(ellipse 900px 500px at 50% -10%, #1a2140 0%, var(--bg) 60%);
+  }
+
+  .lang-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 4px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px;
+    z-index: 10;
+  }
+
+  .lang-switch button {
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 600;
+    font-family: inherit;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  .lang-switch button.active {
+    background: var(--accent-soft);
+    color: #23180a;
   }
 
   .wrap {
@@ -162,36 +192,105 @@
 </style>
 </head>
 <body>
+  <div class="lang-switch">
+    <button id="lang-de" onclick="applyLanguage('de')">DE</button>
+    <button id="lang-en" onclick="applyLanguage('en')">EN</button>
+  </div>
+
   <div class="wrap">
     <header>
-      <img class="icon" src="assets/icon.png" alt="Four Zeros Breath app icon" />
-      <h1>Four Zeros Breath</h1>
-      <p class="tagline">Guided breathing exercises to help you find calm, focus, and balance — anytime, anywhere.</p>
+      <img id="icon" class="icon" src="assets/icon.png" alt="four zeros breathing app icon" />
+      <h1>four zeros breathing</h1>
+      <p id="tagline" class="tagline">Guided breathing exercises to help you find calm, focus, and balance — anytime, anywhere.</p>
     </header>
 
     <section>
-      <h2>Screenshots</h2>
+      <h2 id="screenshotsHeading">Screenshots</h2>
       <div class="screenshots">
-        <img src="assets/screenshot-1.png" alt="Four Zeros Breath breathing exercise in progress" />
-        <img src="assets/screenshot-2.png" alt="Four Zeros Breath exercise detail screen" />
+        <img id="shot1" src="assets/screenshot-1.png" alt="four zeros breathing exercise in progress" />
+        <img id="shot2" src="assets/screenshot-2.png" alt="four zeros breathing exercise detail screen" />
       </div>
     </section>
 
     <section>
-      <h2>Need help?</h2>
+      <h2 id="helpHeading">Need help?</h2>
       <div class="card">
-        <p>Questions, feedback, or something not working as expected? Send us a message and we'll get back to you.</p>
-        <a class="btn" href="mailto:contact@sceynedigital.de?subject=Four%20Zeros%20Breath%20Support">contact@sceynedigital.de</a>
+        <p id="helpText">Questions, feedback, or something not working as expected? Send us a message and we'll get back to you.</p>
+        <a id="mailBtn" class="btn" href="mailto:contact@sceynedigital.de?subject=four%20zeros%20breathing%20support">contact@sceynedigital.de</a>
       </div>
     </section>
 
     <footer>
       <div class="links">
-        <a href="https://sceynedigital.de/privacy-policy/">Privacy Policy</a>
-        <a href="https://sceynedigital.de/impressum/">Impressum</a>
+        <a id="privacyLink" href="https://sceynedigital.de/privacy-policy/">Privacy Policy</a>
+        <a id="imprintLink" href="https://sceynedigital.de/impressum/">Imprint</a>
       </div>
       <div class="copyright">© 2026 sceyne digital</div>
     </footer>
   </div>
+
+  <script>
+    const translations = {
+      en: {
+        title: "four zeros breathing — Support",
+        description: "Support and contact information for the four zeros breathing app.",
+        tagline: "Guided breathing exercises to help you find calm, focus, and balance — anytime, anywhere.",
+        iconAlt: "four zeros breathing app icon",
+        screenshotsHeading: "Screenshots",
+        shot1Alt: "four zeros breathing exercise in progress",
+        shot2Alt: "four zeros breathing exercise detail screen",
+        helpHeading: "Need help?",
+        helpText: "Questions, feedback, or something not working as expected? Send us a message and we'll get back to you.",
+        mailSubject: "four zeros breathing Support",
+        privacy: "Privacy Policy",
+        imprint: "Imprint"
+      },
+      de: {
+        title: "four zeros breathing — Support",
+        description: "Support- und Kontaktinformationen für die App four zeros breathing.",
+        tagline: "Geführte Atemübungen, die dir helfen, Ruhe, Fokus und Balance zu finden — jederzeit und überall.",
+        iconAlt: "four zeros breathing App-Symbol",
+        screenshotsHeading: "Screenshots",
+        shot1Alt: "four zeros breathing Atemübung in Aktion",
+        shot2Alt: "four zeros breathing Detailansicht einer Übung",
+        helpHeading: "Brauchst du Hilfe?",
+        helpText: "Fragen, Feedback oder funktioniert etwas nicht wie erwartet? Schreib uns eine Nachricht und wir melden uns bei dir.",
+        mailSubject: "four zeros breathing Support-Anfrage",
+        privacy: "Datenschutz",
+        imprint: "Impressum"
+      }
+    };
+
+    function applyLanguage(lang) {
+      const t = translations[lang];
+      document.documentElement.lang = lang;
+      document.title = t.title;
+      document.querySelector('meta[name="description"]').setAttribute('content', t.description);
+      document.getElementById('tagline').textContent = t.tagline;
+      document.getElementById('icon').setAttribute('alt', t.iconAlt);
+      document.getElementById('screenshotsHeading').textContent = t.screenshotsHeading;
+      document.getElementById('shot1').setAttribute('alt', t.shot1Alt);
+      document.getElementById('shot2').setAttribute('alt', t.shot2Alt);
+      document.getElementById('helpHeading').textContent = t.helpHeading;
+      document.getElementById('helpText').textContent = t.helpText;
+      document.getElementById('mailBtn').setAttribute('href', 'mailto:contact@sceynedigital.de?subject=' + encodeURIComponent(t.mailSubject));
+      document.getElementById('privacyLink').textContent = t.privacy;
+      document.getElementById('imprintLink').textContent = t.imprint;
+
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-de').classList.toggle('active', lang === 'de');
+
+      localStorage.setItem('lang', lang);
+    }
+
+    function detectLanguage() {
+      const saved = localStorage.getItem('lang');
+      if (saved === 'en' || saved === 'de') return saved;
+      const browserLang = (navigator.language || '').toLowerCase();
+      return browserLang.startsWith('de') ? 'de' : 'en';
+    }
+
+    applyLanguage(detectLanguage());
+  </script>
 </body>
 </html>
